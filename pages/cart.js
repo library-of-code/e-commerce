@@ -8,21 +8,14 @@ const about = () => {
 
     const { cart, setcart } = useContext(CartContext)
 
-    const [items, setitems] = useState()
-    useEffect(() => {
-        (async () => { 
-            setitems(await getShopItems()) 
-        })()
-    }, [])
-
     const handler = (item) => {
-        setcart([...cart, item])
+        setcart(cart.filter(cartItem => item.title!=cartItem.title))
     }
 
     return (
         <Layout>
             <div style={{ display: "flex", flexFlow: "row wrap", padding: "2em" }}>
-                {items && items.map(item => <div style={{ margin: "2em" }}><ShopItem handler={handler} {...item} /></div>)}
+                {cart && cart[0] && cart.map(item => <div style={{ margin: "2em" }}><ShopItem handler={handler} {...item} /></div>)}
             </div>
         </Layout>
     )

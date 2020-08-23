@@ -1,17 +1,18 @@
-import { Layout } from 'antd'
+import { Layout, Menu } from 'antd'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
 import { useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/client';
-const { header, Content, footer } = Layout;
+
+const { header, Content, footer, Sider } = Layout;
 
 export default (props) => {
 
     const [session, loading] = useSession()
 
     useEffect(() => {
-        if(props.protected) {
-            if(!session && !loading) signIn()
+        if (props.protected) {
+            if (!session && !loading) signIn()
         }
     })
 
@@ -23,7 +24,7 @@ export default (props) => {
                     {props.children}
                 </div>
             </Content>
-            <span style={{ position: "absolute", bottom: 0 }}><Footer /></span>
+            <span><Footer /></span>
         </Layout>
     )
 }

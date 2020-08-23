@@ -1,11 +1,11 @@
 const navbuttons = [
     {
-        'path': '/about',
-        'label': 'about'
-    },
-    {
         'path': '/',
         'label': 'home'
+    },
+    {
+        'path': '/cart',
+        'label': 'cart'
     }
 ]
 
